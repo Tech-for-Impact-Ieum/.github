@@ -26,15 +26,15 @@
 
 발달장애청년의 온라인 의사소통을 보조합니다.
 
-- **대화 맥락 파악 보조**:
-  <br> 사용자가 대화의 맥락을 빠르게 이해할 수 있도록 요약을 제공합니다.
+ - **대화 맥락 파악 보조**:
+<br>  사용자가 대화의 맥락을 빠르게 이해할 수 있도록 요약을 제공합니다.
 
 - **손쉬운 답장 지원**:
-  <br> 사용자가 손쉽게 대화에 참여할 수 있도록, 손쉬운 답장 옵션을 제공합니다.
+<br>  사용자가 손쉽게 대화에 참여할 수 있도록, 손쉬운 답장 옵션을 제공합니다.
 
 - **직관적인 UI**:
-  <br> 발달장애청년들에게 익숙한 대화 상대의 별명과 사진을 확대하여, 시각적으로 실제 대화 상황임을 알려줍니다.
-  <br> 전반적으로 큰 글씨와 큰 컴포넌트를 사용하여 직관적인 이해를 돕습니다.
+<br>  발달장애청년들에게 익숙한 대화 상대의 별명과 사진을 확대하여, 시각적으로 실제 대화 상황임을 알려줍니다.
+<br>  전반적으로 큰 글씨와 큰 컴포넌트를 사용하여 직관적인 이해를 돕습니다.
 
 ## 프로젝트 결과
 
@@ -52,6 +52,10 @@
 
 - 기존 채팅 서비스는 '안 읽은 메세지'를 대상으로 꼼꼼한 요약을 제공하는 반면, 이음에서는 채팅방의 전반적인 메세지를 대상으로 간결한 요약을 제공합니다. 이로 인해 요약의 디테일이 부족할 수는 있으나, 1-2 문장으로 간결한 요약을 통해서 발달장애청년이 쉽고 빠르게 내용을 인지할 수 있도록 보조합니다.
 
+**텍스트 읽어주기**
+- 주요 텍스트를 음성으로 읽어줍니다. 유저 테스팅에서 발달장애청년들이 텍스트를 읽는 데 어려움을 겪는다는 피드백을 반영하여, 상대방이 보내온 메세지와 대화의 요약본을 TTS로 들을 수 있게 하였습니다. 이를 통해 발달장애청년은 채팅 내용을 보다 쉽게 이해할 수 있습니다.
+
+
 ## 기대 효과
 
 ### 영향
@@ -63,6 +67,9 @@
 
 **주류 채팅 어플리케이션과 통합**
 <br>현재는 자체적인 채팅 서비스를 운영하고 있지만, 추후 주류 채팅 서비스에 통합할 수 있습니다. 이를 통해 발달장애청년은 물론 그들과 소통하는 길동무들은 기존에 이용하던 채팅 어플리케이션 내에서 선택적으로 **이음** 모드를 이용할 수 있습니다.
+
+**사용성 강화**
+<br>발달장애청년이 어플리케이션을 사용하는 방식을 지속적으로 관찰하면서, UI/UX를 개선합니다. 또한 사진, 비디오, 투표 등 텍스트 외에 부가적인 미디어도 전송하고 공유할 수 있도록 개선합니다.
 
 ## 설치 및 실행 방법
 
@@ -86,9 +93,9 @@
 
 Start the Expo development server:
 
-```bash
-npm start
-```
+  ```bash
+  npm start
+  ```
 
 This will open Expo DevTools in your browser. From there you can:
 
@@ -98,21 +105,21 @@ This will open Expo DevTools in your browser. From there you can:
 
 Run on iOS Simulator:
 
-```bash
-npm run ios
-```
+  ```bash
+  npm run ios
+  ```
 
 Run on Android Emulator:
 
-```bash
-npm run android
-```
+  ```bash
+  npm run android
+  ```
 
 Run on Web (for testing):
 
-```bash
-npm run web
-```
+  ```bash
+  npm run web
+  ```
 
 #### Build for production
 
@@ -152,6 +159,7 @@ npm run web
 
 ### Project Structure
 
+For frontend:
 ```
 Ieum-Mobile/
 ├── src/
@@ -176,11 +184,66 @@ Ieum-Mobile/
 │   ├── utils/           # Utility functions
 │   ├── assets/          # Images, fonts, etc.
 │   └── constants/       # Constants
-
 ├── App.tsx              # Main app entry point
 ├── package.json
 └── .env                 # Environment variables (create from .env.example)
 ```
+For backend:
+```
+Ieum-backend/
+├── src/
+│   ├── config/                   # Configuration management
+│   │   └── index.js              # Environment config
+│   ├── database/                 # Database connections and models
+│   │   ├── mongodb/              # MongoDB (chat messages)
+│   │   │   ├── connection.js
+│   │   │   └── models/
+│   │   │       ├── Message.js
+│   │   │       └── PushNotification.js
+│   │   ├── mysql/                # MySQL (users, rooms, friends)
+│   │   │   ├── connection.js
+│   │   │   └── models/
+│   │   │       ├── User.js
+│   │   │       ├── Room.js
+│   │   │       ├── UserRoom.js
+│   │   │       ├── Friend.js
+│   │   │       ├── UserSetting.js
+│   │   │       └── UserRoomSummary.js
+│   │   └── redis/               # Redis (caching/sessions)
+│   │       └── connection.js
+│   ├── middleware/              # Express middleware
+│   │   ├── auth.js              # JWT authentication
+│   │   ├── validation.js        # Request validation
+│   │   └── errorHandler.js      # Error handling
+│   ├── rest-api/                # REST API server
+│   │   ├── server.js            # Express server entry
+│   │   ├── controllers/         # Business logic
+│   │   └── routes/              # API routes
+│   ├── socket-api/              # WebSocket server
+│   │   ├── server.js            # Socket.IO server entry
+│   │   ├── handlers/            # Socket event handlers
+│   │   │   ├── chatHandler.js
+│   │   │   └── presenceHandler.js
+│   │   └── middleware/
+│   │       └── socketAuth.js    # Socket authentication
+│   └── utils/                   # Utility functions
+│       ├── logger.js            # Logging utility
+│       ├── openai.js            # OpenAI integration
+│       ├── s3.js                # AWS S3 file upload
+│       ├── socketEmitter.js     # Cross-server socket events
+│       └── notificationService.js # Push notifications
+├── migrations/                  # Database migrations
+│   └── 20251126000000-add-push-token-to-users.js
+├── scripts/                     # Utility scripts
+│   ├── migrate.js               # Run migrations
+│   ├── seed-data.js             # Seed test data
+│   ├── test-notification.js     # Test push notifications
+│   └── check-user-tokens.js     # Debug utilities
+├── docs/                        # Documentation
+├── archive/                     # Archived files
+├── package.json                 # Dependencies
+```
+
 
 ### Key Technologies
 
@@ -200,6 +263,10 @@ For backend:
 
 - **API Server**: REST API for data operations (default: port 4000)
 - **Socket.io Server**: WebSocket for real-time messaging (default: port 4001)
+
+For AI & Cloud Services:
+- **OpenAI API**: GPT-4o chat summarization and TTS
+- **AWS S3**: Media storage and hosting
 
 ## 관련 프로젝트
 
