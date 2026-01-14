@@ -8,7 +8,7 @@
 
 | 이름   | 소개                            | 연락처                                                  | 역할         |
 | ------ | ------------------------------- | ------------------------------------------------------- | ------------ |
-| 김정우 | KAIST 전산학부 24학번           | 📧 placeholder@kaist.ac.kr <br/> 🧑‍💻 GitHub: placeholder | 팀장         |
+| 김정우 | KAIST 전산학부 24학번           | 📧 jwoo0500@kaist.ac.kr <br/> 🧑‍💻 GitHub: placeholder | 팀장         |
 | 안시현 | KAIST 전기및전자공학부 20학번   | 📧 sihyun.ahn@kaist.ac.kr <br/> 🧑‍💻 GitHub: sihyun-ahn   | Frontend     |
 | 이리아 | KAIST 전산학부 21학번           | 📧 placeholder@kaist.ac.kr <br/> 🧑‍💻 GitHub: placeholder | UI/UX Design |
 | 손주호 | KAIST 산업및시스템공학과 24학번 | 📧 placeholder@kaist.ac.kr <br/> 🧑‍💻 GitHub: placeholder | Backend      |
